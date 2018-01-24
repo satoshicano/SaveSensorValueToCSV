@@ -6,17 +6,17 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class MainActivity extends Activity implements SensorEventListener {
-//    private final static String TAG = MainActivity.class.getSimpleName();
-
-    private File path = Utils.getStorageDir("CSVData");
-    private FileWriter geomagnetic_fw;
-    private FileWriter gyro_fw;
+    private final static String TAG = MainActivity.class.getSimpleName();
+    private File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+    private FileWriter geomagnetic_fw, gyro_fw;
     private SensorManager sensorManager;
 
     @Override
