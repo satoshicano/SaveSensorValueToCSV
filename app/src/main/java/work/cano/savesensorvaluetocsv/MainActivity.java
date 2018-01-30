@@ -39,7 +39,7 @@ public class MainActivity extends Activity implements SensorEventListener {
             e.printStackTrace();
         }
 
-        Sensor geomagnetic = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Sensor geomagnetic = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         Sensor gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
         sensorManager.registerListener(this, geomagnetic, SensorManager.SENSOR_DELAY_NORMAL);
@@ -67,6 +67,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
 
         if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+            Log.d(TAG, Float.toString(event.values[0]));
 
             try {
                 String line = Float.toString(event.values[0]) +
